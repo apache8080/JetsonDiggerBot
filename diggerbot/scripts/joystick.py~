@@ -1,13 +1,8 @@
 #!/usr/bin/env python
 
 import rospy
-
-#try:
 from sensor_msgs.msg import Joy
-#from std_msgs.msg import Int16MultiArray
 from diggerbot.msg import JoyVals
-#except ImportError:
- #   from joy.msg import Joy
 
 def main():
 	rospy.init_node('joystick')
@@ -20,8 +15,7 @@ def main():
 def joyCallback(joy):
 	buttons=joy.buttons
 	joy_value_pub = rospy.Publisher("joyval", JoyVals)
-	#print buttons
-	joy_vals=JoyVals
+	joy_vals=JoyVals()
 	joy_buttons_pressed=[]
 	for b in range(len(buttons)):
 		if buttons[b]==1:

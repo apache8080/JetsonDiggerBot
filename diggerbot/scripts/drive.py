@@ -5,12 +5,12 @@ from diggerbot.msg import JoyVals, DriveVals
 
 def main():
     rospy.init_node('drive_controller')
-    joy = rospy.Subscriber('joyval', JoyVals, driveCallBack)
+    joy = rospy.Subscriber('joyvals', JoyVals, drive_callback)
     try:
         rospy.spin()
     except rospy.ROSInterruptException:pass
 
-def driveCallBack(joy):
+def drive_callback(joy):
     drive_value_pub = rospy.Publisher('drivevals', DriveVals)
     drive_vals = DriveVals()
     

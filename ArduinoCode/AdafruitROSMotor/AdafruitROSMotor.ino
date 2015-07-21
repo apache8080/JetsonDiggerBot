@@ -8,9 +8,9 @@
 
 Adafruit_MotorShield AFMS = Adafruit_MotorShield(); 
 
-Adafruit_DCMotor *leftMotor1 = AFMS.getMotor(1);
-Adafruit_DCMotor *leftMotor2 = AFMS.getMotor(2);
-Adafruit_DCMotor *rightMotor1 = AFMS.getMotor(3);
+Adafruit_DCMotor *leftMotor1 = AFMS.getMotor(2);
+Adafruit_DCMotor *leftMotor2 = AFMS.getMotor(3);
+Adafruit_DCMotor *rightMotor1 = AFMS.getMotor(1);
 Adafruit_DCMotor *rightMotor2 = AFMS.getMotor(4);
 
 ros::NodeHandle  nh;
@@ -24,14 +24,14 @@ void drive_motors( const diggerbot::DriveVals& cmd_msgs){
   if(leftSpeed<0){
     leftMotor1->setSpeed(abs(leftSpeed));
     leftMotor2->setSpeed(abs(leftSpeed));
-    leftMotor1->run(BACKWARD);
-    leftMotor2->run(BACKWARD);
+    leftMotor1->run(FORWARD);
+    leftMotor2->run(FORWARD);
     leftIsReverse = true;
   }else{
     leftMotor1->setSpeed(abs(leftSpeed));
     leftMotor2->setSpeed(abs(leftSpeed));
-    leftMotor1->run(FORWARD);
-    leftMotor2->run(FORWARD);
+    leftMotor1->run(BACKWARD);
+    leftMotor2->run(BACKWARD);
     leftIsReverse = false;
   }
   if(rightSpeed<0){
